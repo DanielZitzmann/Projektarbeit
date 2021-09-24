@@ -1,0 +1,5 @@
+nodemon -> startet backend server automatisch neu bei änderungen
+https://medium.com/bb-tutorials-and-thoughts/how-to-use-nodemon-with-nodejs-projects-69d5e7087ded
+
+express
+https://expressjs.com/en/starter/hello-world.html

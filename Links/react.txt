@@ -3,3 +3,6 @@ https://nodejs.org/en/download/
 
 --- Projekt erstellen mit create-react-app
 https://create-react-app.dev/docs/getting-started
+
+--- react docs -> Main Concepts
+https://reactjs.org/docs/getting-started.html
