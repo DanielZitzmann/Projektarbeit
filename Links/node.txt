@@ -3,3 +3,6 @@ https://medium.com/bb-tutorials-and-thoughts/how-to-use-nodemon-with-nodejs-proj
 
 express
 https://expressjs.com/en/starter/hello-world.html
+
+dotenv -> passwörter etc in eine extra datei .env speichern, wird nicht in github hochgeladen (.gitignore)
+https://www.npmjs.com/package/dotenv
