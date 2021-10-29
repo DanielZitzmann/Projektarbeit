@@ -22,13 +22,13 @@ mongoose
         console.error(`Error connecting to the database. \n${err}`);
     });
 
-//import routes
-var artikelroute = require("./routes/artikel.js");
+//import routes'
+var artikelRoute = require("./routes/artikel");
+var tagsRoute = require("./routes/tags");
 
 //middleware
-app.use("/artikel", artikelroute);
-
-console.log(process.env.SECRET_PW);
+app.use("/api/v1/artikel", artikelRoute);
+app.use("/api/v1/tags", tagsRoute);
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);

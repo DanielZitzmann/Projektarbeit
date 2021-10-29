@@ -1,20 +1,25 @@
 var express = require("express");
 var router = express.Router();
+var Artikel = require("../schemas/artikelSchema");
 
-var artikel = [
-    { id: 1, name: "Milch" },
-    { id: 2, name: "Kaffee" },
-    { id: 3, name: "Zucker" },
-    { id: 4, name: "Brot" },
-    { id: 5, name: "Mehl" },
-    { id: 6, name: "Käse" },
-    { id: 9, name: "Wurscht" },
-];
+router.get("/", async (req, res) => {
+    try {
+        const artikel = await Artikel.find();
+        console.log(artikel);
+        res.json(artikel);
+    } catch (err) {
+        res.json({ message: err });
+    }
+});
 
-var suche = "";
-
-router.get("/", function (req, res) {
-    res.send(artikel);
+router.get("/:id", async (req, res) => {
+    try {
+        const artikel = await Artikel.findOne({ _id: req.params.id });
+        console.log(artikel);
+        res.json(artikel);
+    } catch (err) {
+        res.json({ message: err });
+    }
 });
 
 //middleware test
