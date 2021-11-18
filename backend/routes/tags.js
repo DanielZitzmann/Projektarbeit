@@ -49,9 +49,9 @@ router.post("/", async (req, res) => {
         Tag: req.body.TagName,
     });
     try {
-        const savedTags = await tag.save();
+        const savedTag = await tag.save();
         console.log("tag added\n" + tag);
-        res.json(savedTags);
+        res.json(savedTag);
     } catch (err) {
         res.json({ message: err });
     }
@@ -75,7 +75,7 @@ router.delete("/:id", async (req, res, next) => {
 //delete Tag by id
 router.delete("/:id", async (req, res) => {
     try {
-        const deletedTag = await Tag.deleteOne({ _id: req.params.id });
+        await Tag.deleteOne({ _id: req.params.id });
         console.log("tag deleted");
 
         res.json({ message: `${req.params.id} deleted` });
