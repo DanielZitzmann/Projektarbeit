@@ -105,7 +105,7 @@ router.patch("/:id", async (req, res) => {
         );
         res.json(updatedArtikel);
     } catch (err) {
-        res.jsoin({ message: err });
+        res.json({ message: err });
     }
 });
 

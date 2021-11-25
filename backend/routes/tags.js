@@ -64,8 +64,7 @@ router.delete("/:id", async (req, res, next) => {
         if (tag !== null) {
             next();
         } else {
-            res.status(404);
-            res.json("Tag doesn´t exist");
+            res.status(400).json("Tag doesn´t exist");
         }
     } catch (err) {
         res.json({ message: err });
@@ -80,7 +79,7 @@ router.delete("/:id", async (req, res) => {
 
         res.json({ message: `${req.params.id} deleted` });
     } catch (err) {
-        res.json({ message: err });
+        res.status(400).json({ message: err });
     }
 });
 

@@ -1,13 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { print, print2 } from "./api/tagsRoutes";
 
 ReactDOM.render(
     <React.StrictMode>
         <App />
-        {print()}
-        {print2()}
     </React.StrictMode>,
 
     document.getElementById("root")
