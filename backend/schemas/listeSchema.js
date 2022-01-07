@@ -20,3 +20,5 @@ const listeSchema = new Schema({
 }, {timestamps = true});
 
     const Tags = mongoose.model('Liste',listeSchema);
+
+    module.exports = Listen;
