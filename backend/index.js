@@ -27,10 +27,12 @@ mongoose
 //import routes'
 var artikelRoute = require("./routes/artikel");
 var tagsRoute = require("./routes/tags");
+var listenRoute = require("./routes/listen");
 
 //middleware
 app.use("/api/v1/artikel", artikelRoute);
 app.use("/api/v1/tags", tagsRoute);
+app.use("/api/v1/listen", listenRoute);
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
