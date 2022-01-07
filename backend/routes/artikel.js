@@ -12,6 +12,7 @@ router.get("/", async (req, res) => {
         res.json({ message: err });
     }
 });
+
 //get 1 artikel by id
 router.get("/:id", async (req, res) => {
     try {
@@ -40,7 +41,7 @@ router.post("/", async (req, res, next) => {
     }
 });
 
-//add new Tag
+//add new Artikel
 router.post("/", async (req, res) => {
     const artikel = new Artikel({
         Bezeichnung: req.body.Bezeichnung,
