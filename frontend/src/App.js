@@ -1,9 +1,14 @@
-import { Tags } from "./tagstest.js";
+import TagsContainer from "./Components/TagsContainer";
+import ArtikelContainer from "./Components/ArtikelContainer";
+import ListenContainer from "./Components/ListenContainer";
 
 function App() {
+    //TODO: React-Routes Navbar für Container-Komponenten nicht alles auf einmal anzeigen, auswählen über navbar
     return (
         <div>
-            <Tags />
+            <TagsContainer />
+            <ArtikelContainer />
+            <ListenContainer />
         </div>
     );
 }
