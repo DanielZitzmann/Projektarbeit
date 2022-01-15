@@ -2,8 +2,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const listeSchema = new Schema(
-    {
+const listeSchema = new Schema({
         Name: {
             type: String,
             required: true,

@@ -1,21 +1,21 @@
 //Schema für Laden
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ladenSchema = new Schema({
     Name:{
-        type=String,
+        type: String,
         required=true
     },
     //Adresse fehlt
 
     User:{
-        type=String,
+        type: String,
         required=true
     }
 
 }, {timestamps = true});
 
+const Laden = mongoose.model('Laden',ladenSchema);
 
-
-const Tags = mongoose.model('Laden',ladenSchema);
+module.exports = Laden;
