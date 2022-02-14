@@ -17,7 +17,7 @@ export default class NavbarComp extends Component {
         return (
             <Router>
                 <div>
-                    <Navbar className="navbar" expand="lg">
+                    <Navbar className="navbar" expand="sm">
                         <Navbar.Brand as={Link} to={"/home"} href="#home">
                             Cooles Banner
                         </Navbar.Brand>
