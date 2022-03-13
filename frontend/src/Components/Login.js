@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 
-function LoginComp() {
+function LoginComp(props) {
     const [name, setName] = useState("");
     const [password, setPW] = useState("");
     const [token, setToken] = useState("");
@@ -74,6 +74,18 @@ function LoginComp() {
                     >
                         Anmelden
                     </Button>
+                    <Form.Group>
+                        <Form.Label className="mt-3 d-block">
+                            noch kein Konto?
+                        </Form.Label>
+                        <Button
+                            onClick={() => props.toggleSignup(!props.SignUp)}
+                            variant="secondary"
+                            type="submit"
+                        >
+                            Registrieren
+                        </Button>
+                    </Form.Group>
                 </Form>
             </div>
         </div>

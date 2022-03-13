@@ -12,6 +12,10 @@ const artikelSchema = new Schema(
             type: Array,
             required: false,
         },
+        Owner: {
+            type: String,
+            required: false,
+        },
     },
     { timestamps: true }
 );
