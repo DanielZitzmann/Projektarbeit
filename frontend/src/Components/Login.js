@@ -4,7 +4,7 @@ import CookieConsent from "react-cookie-consent";
 
 import axios from "axios";
 
-function LoginComp() {
+function LoginComp(props) {
     const [name, setName] = useState("");
     const [password, setPW] = useState("");
     const [token, setToken] = useState("");
@@ -80,6 +80,18 @@ function LoginComp() {
                     >
                         Anmelden
                     </Button>
+                    <Form.Group>
+                        <Form.Label className="mt-3 d-block">
+                            noch kein Konto?
+                        </Form.Label>
+                        <Button
+                            onClick={() => props.toggleSignup(!props.SignUp)}
+                            variant="secondary"
+                            type="submit"
+                        >
+                            Registrieren
+                        </Button>
+                    </Form.Group>
                 </Form>
             </div>
             <div>

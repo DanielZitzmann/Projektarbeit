@@ -2,7 +2,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const listeSchema = new Schema({
+const listeSchema = new Schema(
+    {
         Name: {
             type: String,
             required: true,
@@ -13,8 +14,8 @@ const listeSchema = new Schema({
             required: false,
         },
 
-        User: {
-            type: Array,
+        Owner: {
+            type: String,
             required: false,
         },
     },
