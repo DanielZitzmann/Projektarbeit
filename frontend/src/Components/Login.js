@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import CookieConsent from "react-cookie-consent";
+
 import axios from "axios";
 
 function LoginComp(props) {
@@ -29,7 +31,11 @@ function LoginComp(props) {
                 localStorage.setItem("token", res.data.token);
                 localStorage.setItem("id", res.data._id);
                 localStorage.setItem("name", name);
+                
 
+
+                //localStorage.removeItem("id");
+                //localStorage.removeItem("token");
                 window.location.reload();
             })
             .catch((err) => {
@@ -87,6 +93,17 @@ function LoginComp(props) {
                         </Button>
                     </Form.Group>
                 </Form>
+            </div>
+            <div>
+                <CookieConsent
+                    location="top"
+                    style={{background: "#099DEC"}}
+                    buttonStyle={{color:"#000",background:"#fff"}}
+                    buttonText="Ich bin einverstanden mit der Verwendung von Cookies"
+                    expires={7}
+                >  
+                    Diese Seite verwendet Cookies
+                    </CookieConsent>
             </div>
         </div>
     );
