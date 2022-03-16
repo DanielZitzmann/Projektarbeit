@@ -5,8 +5,8 @@ import axios from "axios";
 function LoginComp(props) {
     const [name, setName] = useState("");
     const [password, setPW] = useState("");
-    const [token, setToken] = useState("");
-    const [id, setID] = useState("");
+    //const [token, setToken] = useState("");
+    //const [id, setID] = useState("");
     const [errorMsg, setErrorMsg] = useState("");
 
     function login(event) {
@@ -22,9 +22,9 @@ function LoginComp(props) {
             .post("http://localhost:3001/api/v1/auth/login", data)
             .then((res) => {
                 console.log(res.data._id);
-                setID(res.data._id);
+                //setID(res.data._id);
                 console.log(res.data.token);
-                setToken(res.data.token);
+                //setToken(res.data.token);
                 setErrorMsg("");
                 localStorage.setItem("token", res.data.token);
                 localStorage.setItem("id", res.data._id);

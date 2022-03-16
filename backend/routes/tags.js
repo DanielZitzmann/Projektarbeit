@@ -5,8 +5,8 @@ var Tag = require("../schemas/tagSchema");
 //gets all tags
 router.get("/", async (req, res) => {
     try {
-        const tags = await Tag.find();
-        console.log(tags);
+        const tags = await Tag.find({ User: req.userid });
+        //console.log(tags);
         res.json(tags);
     } catch (err) {
         res.json({ message: err });
@@ -31,7 +31,10 @@ router.get("/:id", async (req, res) => {
 //Middleware checks if Tag already exists
 router.post("/", async (req, res, next) => {
     try {
-        const tag = await Tag.findOne({ Tag: req.body.TagName });
+        const tag = await Tag.findOne({
+            Tag: req.body.TagName,
+            User: req.userid,
+        });
         //console.log(tag);
         if (tag !== null) {
             res.json({ message: "Tag already exists" });
@@ -47,6 +50,7 @@ router.post("/", async (req, res, next) => {
 router.post("/", async (req, res) => {
     const tag = new Tag({
         Tag: req.body.TagName,
+        User: req.userid,
     });
     try {
         const savedTag = await tag.save();

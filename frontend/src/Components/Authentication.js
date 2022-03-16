@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
 import LoginComp from "./Login";
 import SignUpComp from "./SignUp";
 

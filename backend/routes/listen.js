@@ -2,12 +2,14 @@ var express = require("express");
 var router = express.Router();
 var Liste = require("../schemas/listeSchema");
 var Artikel = require("../schemas/artikelSchema");
+var User = require("../schemas/userSchema");
 
 //get all lists
 router.get("/", async (req, res) => {
     try {
-        const liste = await Liste.find();
-        console.log(liste);
+        // const liste = await Liste.find({ Users: { $contains: req.userid } });
+        const liste = await Liste.find({ Users: req.userid });
+        //console.log(liste);
         res.json(liste);
     } catch (err) {
         res.json({ message: err });
@@ -19,7 +21,7 @@ router.post("/", async (req, res) => {
     const list = new Liste({
         Name: req.body.Name,
         Artikel: req.body.Artikel,
-        User: req.body.User,
+        Users: req.userid,
     });
     try {
         const savedList = await list.save();
@@ -163,6 +165,51 @@ router.delete("/:id/artikel", async (req, res) => {
         res.json(updatedList);
     } catch (err) {
         res.json({ message: err });
+    }
+});
+
+//addUsertoList
+router.patch("/:id/addUser/test", async (req, res, next) => {
+    try {
+        console.log("hier");
+        const liste = await Liste.findOne({ _id: req.params.id });
+        if (liste !== null) {
+            next();
+        } else {
+            res.status(404);
+            res.json("Liste doesn´t exist");
+        }
+    } catch (err) {
+        res.json({ message: err });
+    }
+});
+
+const userExists = async function (req, res, next) {
+    try {
+        const user = await User.findOne({ Name: req.body.Username });
+        console.log(user);
+        if (user == null) {
+            res.status(400).json({ message: "User doesn´t exist" });
+        } else {
+            req.newUserID = user.id;
+            console.log(req.newUserID);
+            next();
+        }
+    } catch (err) {
+        res.json({ message: err });
+    }
+};
+
+router.patch("/:id/addUser/test", userExists, async (req, res) => {
+    try {
+        const update = await Liste.updateOne(
+            { _id: req.params.id },
+            { $push: { Users: req.newUserID } }
+        );
+        console.log(update);
+        res.json(update);
+    } catch (err) {
+        res.status(401).json({ message: err });
     }
 });
 

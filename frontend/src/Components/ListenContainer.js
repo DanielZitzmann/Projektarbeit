@@ -1,34 +1,45 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { ListGroup } from "react-bootstrap";
+import NewList from "./NewList";
+import List from "./List";
 
 function ListenContainer() {
     //state Variable
     const [listen, setListen] = useState([]);
+    const [errMsg, setErrMsg] = useState("");
+    const [updateList, setUpdateList] = useState({});
 
     //nachdem die Komponente gemountet wurde, werden von Backend alle Listen geholt und in der state Variable "listen" gespeichert
     useEffect(() => {
-        axios.get("http://localhost:3001/api/v1/listen").then((res) => {
-            setListen(res.data);
-        });
-    }, []);
+        axios
+            .get("http://localhost:3001/api/v1/listen", {
+                headers: { "auth-token": localStorage.token },
+            })
+            .then((res) => {
+                setListen(res.data);
+            })
+            .catch((err) => {
+                setErrMsg(err.response.data);
+            });
+    }, [updateList]);
 
     return (
         <div style={{ border: "5px solid orange" }}>
-            <h1>ListenContainer</h1>
+            <h1>Meine Listen</h1>
+            {
+                //test was passiert wenn token ungültig ist
+                errMsg && <h2 style={{ color: "red" }}>{errMsg}</h2>
+            }
             {console.log(listen)}
             {listen.map((liste) => (
-                <ul key={liste._id}>
-                    <li>ID: {liste._id}</li>
-                    <li>Name: {liste.Name}</li>
-                    <li>
-                        {liste.Artikel.map((artikel) => (
-                            <ul key={artikel}>
-                                <li>{artikel}</li>
-                            </ul>
-                        ))}
-                    </li>
-                </ul>
+                <ListGroup key={liste._id}>
+                    <ListGroup.Item>
+                        <List List={liste} updateState={setUpdateList}></List>
+                    </ListGroup.Item>
+                </ListGroup>
             ))}
+            <NewList updateState={setUpdateList}></NewList>
         </div>
     );
 }

@@ -14,8 +14,8 @@ const listeSchema = new Schema(
             required: false,
         },
 
-        Owner: {
-            type: String,
+        Users: {
+            type: Array,
             required: false,
         },
     },

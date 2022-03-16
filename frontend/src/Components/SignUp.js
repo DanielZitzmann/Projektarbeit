@@ -6,8 +6,8 @@ function SignUpComp(props) {
     const [name, setName] = useState("");
     const [password1, setPW1] = useState("");
     const [password2, setPW2] = useState("");
-    const [token, setToken] = useState("");
-    const [id, setID] = useState("");
+    //const [token, setToken] = useState("");
+    //const [id, setID] = useState("");
     const [userErrorMsg, setUserErrorMsg] = useState("");
 
     function signUp(event) {
@@ -39,9 +39,9 @@ function SignUpComp(props) {
                     .post("http://localhost:3001/api/v1/auth/login", data)
                     .then((res) => {
                         console.log(res.data._id);
-                        setID(res.data._id);
+                        //setID(res.data._id);
                         console.log(res.data.token);
-                        setToken(res.data.token);
+                        //setToken(res.data.token);
                         setUserErrorMsg("");
                         localStorage.setItem("token", res.data.token);
                         localStorage.setItem("id", res.data._id);

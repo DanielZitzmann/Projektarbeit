@@ -8,6 +8,10 @@ const tagSchema = new Schema(
             type: String,
             required: true,
         },
+        User: {
+            type: String,
+            required: false,
+        },
     },
     { timestamps: true }
 );

@@ -4,17 +4,29 @@ import axios from "axios";
 function ArtikelContainer() {
     //state Variable
     const [artikel, setArtikel] = useState([]);
+    const [errMsg, setErrMsg] = useState("");
 
     //nachdem die Komponente gemountet wurde, werden von Backend alle Artikel geholt und in der state Variable "artikel" gespeichert
     useEffect(() => {
-        axios.get("http://localhost:3001/api/v1/artikel").then((res) => {
-            setArtikel(res.data);
-        });
+        axios
+            .get("http://localhost:3001/api/v1/artikel", {
+                headers: { "auth-token": localStorage.token },
+            })
+            .then((res) => {
+                setArtikel(res.data);
+            })
+            .catch((err) => {
+                setErrMsg(err.response.data);
+            });
     }, []);
 
     return (
         <div style={{ border: "5px solid green" }}>
             <h1>ArtikelContainer</h1>
+            {
+                //test was passiert wenn token ungültig ist
+                errMsg && <h2 style={{ color: "red" }}>{errMsg}</h2>
+            }
             {console.log(artikel)}
             {artikel.map((artikel) => (
                 <ul key={artikel._id}>

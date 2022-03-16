@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import NewTag from "./NewTag";
+import { ListGroup } from "react-bootstrap";
+import Tag from "./Tag";
 
 function TagsContainer() {
     //state Variable
     const [tags, setTags] = useState([]);
+    //inhalt uninteressant, wird nur gebraucht um neu zu rendern
+    const [newTag, setNewTag] = useState({});
+    //inhalt uninteressant, wird nur gebraucht um neu zu rendern
+    const [tagChange, setTagChange] = useState({});
     //test was passiert wenn token ungültig ist
     const [errMsg, setErrMsg] = useState("");
 
@@ -14,27 +21,29 @@ function TagsContainer() {
                 headers: { "auth-token": localStorage.token },
             })
             .then((res) => {
+                //console.log(res.data);
                 setTags(res.data);
             })
             .catch((err) => {
                 setErrMsg(err.response.data);
             });
-    }, []);
+    }, [newTag, tagChange]);
 
     return (
         <div style={{ border: "5px solid red" }}>
-            <h1>TagsContainer</h1>
+            <h1>Meine Tags</h1>
             {
                 //test was passiert wenn token ungültig ist
                 errMsg && <h2 style={{ color: "red" }}>{errMsg}</h2>
             }
-            {console.log(tags)}
             {tags.map((tag) => (
-                <ul key={tag._id}>
-                    <li>ID: {tag._id}</li>
-                    <li>Tagname: {tag.Tag}</li>
-                </ul>
+                <ListGroup key={tag._id}>
+                    <ListGroup.Item>
+                        <Tag Tag={tag} updateState={setTagChange}></Tag>
+                    </ListGroup.Item>
+                </ListGroup>
             ))}
+            <NewTag updateState={setNewTag}></NewTag>
         </div>
     );
 }

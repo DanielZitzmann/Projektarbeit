@@ -32,10 +32,15 @@ var authRoute = require("./routes/authentication");
 var tokenVerification = require("./routes/verifyToken");
 
 //middleware
-app.use("/api/v1/artikel", artikelRoute);
 app.use("/api/v1/tags", tokenVerification);
 app.use("/api/v1/tags", tagsRoute);
+
+app.use("/api/v1/artikel", tokenVerification);
+app.use("/api/v1/artikel", artikelRoute);
+
+app.use("/api/v1/listen", tokenVerification);
 app.use("/api/v1/listen", listenRoute);
+
 app.use("/api/v1/auth", authRoute);
 
 app.listen(port, () => {

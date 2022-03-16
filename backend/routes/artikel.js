@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
     try {
         const artikel = await Artikel.findOne({ _id: req.params.id });
-        console.log(artikel);
+        //console.log(artikel);
         res.json(artikel);
     } catch (err) {
         res.json({ message: err });
@@ -97,7 +97,7 @@ router.patch("/:id", async (req, res, next) => {
         res.json({ message: err });
     }
 });
-//updates existing artikel... Bezeichnung, Tags will replaced completely
+//updates existing artikel... Bezeichnung, Tags will be replaced completely
 router.patch("/:id", async (req, res) => {
     try {
         const updatedArtikel = await Artikel.updateOne(
