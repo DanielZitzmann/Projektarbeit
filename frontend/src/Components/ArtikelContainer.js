@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Artikel from "./Artikel";
+import { ListGroup } from "react-bootstrap";
+import NewArtikel from "./NewArtikel";
 
 function ArtikelContainer() {
     //state Variable
     const [artikel, setArtikel] = useState([]);
     const [errMsg, setErrMsg] = useState("");
+    const [UpdateList, setUpdateList] = useState({});
 
     //nachdem die Komponente gemountet wurde, werden von Backend alle Artikel geholt und in der state Variable "artikel" gespeichert
     useEffect(() => {
@@ -18,29 +22,27 @@ function ArtikelContainer() {
             .catch((err) => {
                 setErrMsg(err.response.data);
             });
-    }, []);
+    }, [UpdateList]);
 
     return (
         <div style={{ border: "5px solid green" }}>
-            <h1>ArtikelContainer</h1>
+            <h1>Meine Artikel</h1>
             {
                 //test was passiert wenn token ungültig ist
                 errMsg && <h2 style={{ color: "red" }}>{errMsg}</h2>
             }
             {console.log(artikel)}
             {artikel.map((artikel) => (
-                <ul key={artikel._id}>
-                    <li>ID: {artikel._id}</li>
-                    <li>Artikelname: {artikel.Bezeichnung}</li>
-                    <li>
-                        {artikel.Tags.map((tag) => (
-                            <ul key={tag}>
-                                <li>{tag}</li>
-                            </ul>
-                        ))}
-                    </li>
-                </ul>
+                <ListGroup key={artikel._id}>
+                    <ListGroup.Item>
+                        <Artikel
+                            Artikel={artikel}
+                            updateState={setUpdateList}
+                        ></Artikel>
+                    </ListGroup.Item>
+                </ListGroup>
             ))}
+            <NewArtikel updateState={setUpdateList}></NewArtikel>
         </div>
     );
 }

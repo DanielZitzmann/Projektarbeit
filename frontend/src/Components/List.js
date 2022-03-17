@@ -31,6 +31,8 @@ function List(props) {
 
         const data = { Username: addUser };
 
+        //api call
+
         axios
             .patch(
                 `http://localhost:3001/api/v1/listen/${props.List._id}/addUser/test`,
@@ -41,8 +43,6 @@ function List(props) {
             )
             .then((res) => {
                 console.log(res);
-
-                //api call
 
                 //state variablen zurücksetzen
 
