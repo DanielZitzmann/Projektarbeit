@@ -29,14 +29,20 @@ function SignUpComp(props) {
             Password: password1,
         };
         axios
-            .post("http://localhost:3001/api/v1/auth/register", data)
+            .post(
+                `http://${process.env.REACT_APP_IP}:3001/api/v1/auth/register`,
+                data
+            )
             .then((res) => {
                 console.log(res.data);
                 setUserErrorMsg("");
 
                 //automatischer login
                 axios
-                    .post("http://localhost:3001/api/v1/auth/login", data)
+                    .post(
+                        `http://${process.env.REACT_APP_IP}:3001/api/v1/auth/login`,
+                        data
+                    )
                     .then((res) => {
                         console.log(res.data._id);
                         //setID(res.data._id);

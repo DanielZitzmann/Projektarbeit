@@ -8,9 +8,12 @@ function Tag(props) {
         // Datenbankaufruf
 
         axios
-            .delete(`http://localhost:3001/api/v1/tags/${props.Tag._id}`, {
-                headers: { "auth-token": localStorage.token },
-            })
+            .delete(
+                `http://${process.env.REACT_APP_ID}:3001/api/v1/tags/${props.Tag._id}`,
+                {
+                    headers: { "auth-token": localStorage.token },
+                }
+            )
             .then((res) => {
                 console.log(res);
                 props.updateState(res.data);

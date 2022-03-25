@@ -5,7 +5,7 @@ var Artikel = require("../schemas/artikelSchema");
 //get all artikel
 router.get("/", async (req, res) => {
     try {
-        const artikel = await Artikel.find();
+        const artikel = await Artikel.find({ User: req.userid });
         console.log(artikel);
         res.json(artikel);
     } catch (err) {
@@ -29,6 +29,7 @@ router.post("/", async (req, res, next) => {
     try {
         const artikel = await Artikel.findOne({
             Bezeichnung: req.body.Bezeichnung,
+            User: req.userid,
         });
         //console.log(artikel);
         if (artikel !== null) {
@@ -46,6 +47,7 @@ router.post("/", async (req, res) => {
     const artikel = new Artikel({
         Bezeichnung: req.body.Bezeichnung,
         Tags: req.body.Tags,
+        User: req.userid,
     });
     try {
         const savedArtikel = await artikel.save();

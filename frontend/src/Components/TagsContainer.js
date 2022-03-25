@@ -17,11 +17,12 @@ function TagsContainer() {
     //nachdem die Komponente gemountet wurde, werden von Backend alle Tags geholt und in der state Variable "tags" gespeichert
     useEffect(() => {
         axios
-            .get("http://localhost:3001/api/v1/tags", {
+            .get(`http://${process.env.REACT_APP_IP}:3001/api/v1/tags`, {
                 headers: { "auth-token": localStorage.token },
             })
             .then((res) => {
                 //console.log(res.data);
+                console.log(process.env.REACT_APP_IP);
                 setTags(res.data);
             })
             .catch((err) => {

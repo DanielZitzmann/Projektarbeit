@@ -17,7 +17,7 @@ function ArtikelContainer() {
     //nachdem die Komponente gemountet wurde, werden von Backend alle Artikel geholt und in der state Variable "artikel" gespeichert
     useEffect(() => {
         axios
-            .get("http://localhost:3001/api/v1/artikel", {
+            .get(`http://${process.env.REACT_APP_IP}:3001/api/v1/artikel`, {
                 headers: { "auth-token": localStorage.token },
             })
             .then((res) => {
@@ -30,7 +30,7 @@ function ArtikelContainer() {
             });
 
         axios
-            .get("http://localhost:3001/api/v1/tags", {
+            .get(`http://${process.env.REACT_APP_IP}:3001/api/v1/tags`, {
                 headers: { "auth-token": localStorage.token },
             })
             .then((res) => {

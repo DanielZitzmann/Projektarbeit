@@ -12,7 +12,7 @@ function NewTag(props) {
         const data = { TagName: tagName };
 
         axios
-            .post("http://localhost:3001/api/v1/tags", data, {
+            .post(`http://${process.env.REACT_APP_IP}:3001/api/v1/tags`, data, {
                 headers: { "auth-token": localStorage.token },
             })
             .then((res) => {

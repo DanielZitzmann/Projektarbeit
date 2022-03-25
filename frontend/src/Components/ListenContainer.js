@@ -13,7 +13,7 @@ function ListenContainer() {
     //nachdem die Komponente gemountet wurde, werden von Backend alle Listen geholt und in der state Variable "listen" gespeichert
     useEffect(() => {
         axios
-            .get("http://localhost:3001/api/v1/listen", {
+            .get(`http://${process.env.REACT_APP_IP}:3001/api/v1/listen`, {
                 headers: { "auth-token": localStorage.token },
             })
             .then((res) => {

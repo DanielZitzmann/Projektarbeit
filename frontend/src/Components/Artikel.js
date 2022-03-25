@@ -9,7 +9,7 @@ function Artikel(props) {
 
         axios
             .delete(
-                `http://localhost:3001/api/v1/artikel/${props.Artikel._id}`,
+                `http://${process.env.REACT_APP_IP}:3001/api/v1/artikel/${props.Artikel._id}`,
                 {
                     headers: { "auth-token": localStorage.token },
                 }

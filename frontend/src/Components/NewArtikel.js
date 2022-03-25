@@ -16,9 +16,13 @@ function NewArtikel(props) {
         const data = { Bezeichnung: ArtikelName, Tags: selectedTags };
 
         axios
-            .post("http://localhost:3001/api/v1/artikel", data, {
-                headers: { "auth-token": localStorage.token },
-            })
+            .post(
+                `http://${process.env.REACT_APP_IP}:3001/api/v1/artikel`,
+                data,
+                {
+                    headers: { "auth-token": localStorage.token },
+                }
+            )
             .then((res) => {
                 console.log(res);
                 props.updateState(res.data);
@@ -32,7 +36,7 @@ function NewArtikel(props) {
 
     useEffect(() => {
         axios
-            .get("http://localhost:3001/api/v1/tags", {
+            .get(`http://${process.env.REACT_APP_IP}:3001/api/v1/tags`, {
                 headers: { "auth-token": localStorage.token },
             })
             .then((res) => {
@@ -51,7 +55,7 @@ function NewArtikel(props) {
         const data = { TagName: tagName };
 
         axios
-            .post("http://localhost:3001/api/v1/tags", data, {
+            .post(`http://${process.env.REACT_APP_IP}:3001/api/v1/tags`, data, {
                 headers: { "auth-token": localStorage.token },
             })
             .then((res) => {

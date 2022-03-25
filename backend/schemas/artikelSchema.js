@@ -12,7 +12,7 @@ const artikelSchema = new Schema(
             type: Array,
             required: false,
         },
-        Owner: {
+        User: {
             type: String,
             required: false,
         },

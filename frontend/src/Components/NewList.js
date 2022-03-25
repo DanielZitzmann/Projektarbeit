@@ -12,9 +12,13 @@ function NewList(props) {
         const data = { Name: listName };
 
         axios
-            .post("http://localhost:3001/api/v1/listen", data, {
-                headers: { "auth-token": localStorage.token },
-            })
+            .post(
+                `http://${process.env.REACT_APP_IP}:3001/api/v1/listen`,
+                data,
+                {
+                    headers: { "auth-token": localStorage.token },
+                }
+            )
             .then((res) => {
                 console.log(res);
                 props.updateState(res.data);

@@ -21,7 +21,10 @@ function LoginComp(props) {
             Password: password,
         };
         axios
-            .post("http://localhost:3001/api/v1/auth/login", data)
+            .post(
+                `http://${process.env.REACT_APP_IP}:3001/api/v1/auth/login`,
+                data
+            )
             .then((res) => {
                 console.log(res.data._id);
                 //setID(res.data._id);
@@ -31,8 +34,6 @@ function LoginComp(props) {
                 localStorage.setItem("token", res.data.token);
                 localStorage.setItem("id", res.data._id);
                 localStorage.setItem("name", name);
-                
-
 
                 //localStorage.removeItem("id");
                 //localStorage.removeItem("token");
@@ -97,13 +98,13 @@ function LoginComp(props) {
             <div>
                 <CookieConsent
                     location="top"
-                    style={{background: "#099DEC"}}
-                    buttonStyle={{color:"#000",background:"#fff"}}
+                    style={{ background: "#099DEC" }}
+                    buttonStyle={{ color: "#000", background: "#fff" }}
                     buttonText="Ich bin einverstanden mit der Verwendung von Cookies"
                     expires={7}
-                >  
+                >
                     Diese Seite verwendet Cookies
-                    </CookieConsent>
+                </CookieConsent>
             </div>
         </div>
     );

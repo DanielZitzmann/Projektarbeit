@@ -13,9 +13,12 @@ function List(props) {
         // Datenbankaufruf
 
         axios
-            .delete(`http://localhost:3001/api/v1/listen/${props.List._id}`, {
-                headers: { "auth-token": localStorage.token },
-            })
+            .delete(
+                `http://${process.env.REACT_APP_IP}:3001/api/v1/listen/${props.List._id}`,
+                {
+                    headers: { "auth-token": localStorage.token },
+                }
+            )
             .then((res) => {
                 console.log(res);
                 props.updateState(res.data);
@@ -35,7 +38,7 @@ function List(props) {
 
         axios
             .patch(
-                `http://localhost:3001/api/v1/listen/${props.List._id}/addUser/test`,
+                `http://${process.env.REACT_APP_IP}:3001/api/v1/listen/${props.List._id}/addUser/test`,
                 data,
                 {
                     headers: { "auth-token": localStorage.token },
