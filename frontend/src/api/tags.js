@@ -9,7 +9,9 @@ function getAllTags() {
 
 //deleteTagByID
 function deleteTagByID(id) {
-    return axios.delete(`http://localhost:3001/api/v1/tags/${id}`);
+    return axios.delete(
+        `http://${process.env.REACT_APP_IP}:3001/api/v1/tags/${id}`
+    );
 }
 //addTag
 
