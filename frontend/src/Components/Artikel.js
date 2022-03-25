@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Container, ListGroup, Badge } from "react-bootstrap";
+import { Button, Container, Badge } from "react-bootstrap";
 import axios from "axios";
 
 function Artikel(props) {
@@ -22,24 +22,11 @@ function Artikel(props) {
                 console.error(err.response.data);
             });
     }
-
-    function editArtikel(e) {
-        e.preventDefault();
-    }
-
     return (
         <div>
             <Container className=" m-0 p-0 d-flex flex-row justify-content-between">
                 <h4 className="p-1 m-1">{props.Artikel.Bezeichnung}</h4>
                 <div>
-                    <Button
-                        className={"m-1"}
-                        variant="primary"
-                        type="submit"
-                        onClick={(e) => editArtikel(e)}
-                    >
-                        bearbeiten
-                    </Button>
                     <Button
                         className={"m-1"}
                         variant="danger"
