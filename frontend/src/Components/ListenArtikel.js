@@ -2,15 +2,17 @@ import React from "react";
 import { Button, Container } from "react-bootstrap";
 import axios from "axios";
 
-function Tag(props) {
-    function deleteTag(e) {
+function ListenArtikel(props) {
+    function deleteArtikel(e) {
         e.preventDefault();
         // Datenbankaufruf
+        const bodydata = { artikelName: props.Artikel };
 
         axios
             .delete(
-                `http://${process.env.REACT_APP_IP}:3001/api/v1/tags/${props.Tag._id}`,
+                `http://${process.env.REACT_APP_IP}:3001/api/v1/listen/${props.ListID}/artikel`,
                 {
+                    data: bodydata,
                     headers: { "auth-token": localStorage.token },
                 }
             )
@@ -25,12 +27,12 @@ function Tag(props) {
 
     return (
         <Container className=" m-0 p-0 d-flex flex-row justify-content-between">
-            <h4 className="p-1 m-1">{props.Tag.Tag}</h4>
+            <h4 className="p-1 m-1">{props.Artikel}</h4>
             <Button
                 className={"m-1"}
                 variant="danger"
                 type="submit"
-                onClick={(e) => deleteTag(e)}
+                onClick={(e) => deleteArtikel(e)}
             >
                 löschen
             </Button>
@@ -38,4 +40,4 @@ function Tag(props) {
     );
 }
 
-export default Tag;
+export default ListenArtikel;

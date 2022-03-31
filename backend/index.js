@@ -11,6 +11,8 @@ app.use(express.json());
 
 //db connection
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.ecudo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+//const uri = `mongoose.connect('mongodb://localhost:27017/projekt')`;
+
 const connectionParams = {
     useNewUrlParser: true,
     useUnifiedTopology: true,

@@ -3,7 +3,7 @@ import axios from "axios";
 import Artikel from "./Artikel";
 import { Form, ListGroup, Badge } from "react-bootstrap";
 import NewArtikel from "./NewArtikel";
-function ArtikelContainer() {
+function ArtikelContainer(props) {
     //state Variablen
     const [artikel, setArtikel] = useState([]);
     const [filteredArtikel, setFilteredArtikel] = useState([]);
@@ -13,6 +13,7 @@ function ArtikelContainer() {
     const [searchTerm, setSearchTerm] = useState("");
     const [tagsFilter, setTagsFilter] = useState([]);
     const [allTags, setAllTags] = useState([]);
+    const [addToList, setaddToList] = useState(false);
 
     //nachdem die Komponente gemountet wurde, werden von Backend alle Artikel geholt und in der state Variable "artikel" gespeichert
     useEffect(() => {
@@ -24,6 +25,7 @@ function ArtikelContainer() {
                 setArtikel(res.data);
                 setFilteredArtikel(res.data);
                 setFilteredByTags(res.data);
+                props.ListID ? setaddToList(true) : setaddToList(false);
             })
             .catch((err) => {
                 setErrMsg(err.response.data);
@@ -49,7 +51,7 @@ function ArtikelContainer() {
             .catch((err) => {
                 console.log(err.response.data);
             });
-    }, [UpdateList]);
+    }, [UpdateList, props.ListID]);
     //Filterung baut aufeinander auf... artikel -> name filtern -> nach Tags filtern
 
     useEffect(() => {
@@ -103,12 +105,10 @@ function ArtikelContainer() {
 
     return (
         <div style={{ border: "5px solid green" }}>
-            <h1>Meine Artikel</h1>
-            {
-                //test was passiert wenn token ungültig ist
-                errMsg && <h2 style={{ color: "red" }}>{errMsg}</h2>
-            }
+            {!props.ListID && <h1>Meine Artikel</h1>}
+            {errMsg && <h2 style={{ color: "red" }}>{errMsg}</h2>}
             {console.log(artikel)}
+            {console.log(addToList)}
             <Form>
                 <Form.Group>
                     <Form.Control
@@ -141,11 +141,14 @@ function ArtikelContainer() {
                 </Form.Group>
             </Form>
             {filteredByTags.map((artikel) => (
-                <ListGroup key={artikel._id}>
-                    <ListGroup.Item>
+                <ListGroup>
+                    <ListGroup.Item key={artikel._id}>
                         <Artikel
                             Artikel={artikel}
                             updateState={setUpdateList}
+                            updateState2={props.updateState}
+                            addToList={addToList}
+                            ListID={props.ListID}
                         ></Artikel>
                     </ListGroup.Item>
                 </ListGroup>

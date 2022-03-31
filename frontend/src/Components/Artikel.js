@@ -5,22 +5,44 @@ import axios from "axios";
 function Artikel(props) {
     function deleteArtikel(e) {
         e.preventDefault();
-        // Datenbankaufruf
+        if (props.addToList) {
+            console.log(props.ListID);
 
-        axios
-            .delete(
-                `http://${process.env.REACT_APP_IP}:3001/api/v1/artikel/${props.Artikel._id}`,
-                {
-                    headers: { "auth-token": localStorage.token },
-                }
-            )
-            .then((res) => {
-                console.log(res);
-                props.updateState(res.data);
-            })
-            .catch((err) => {
-                console.error(err.response.data);
-            });
+            const data = {};
+
+            axios
+                .patch(
+                    `http://${process.env.REACT_APP_IP}:3001/api/v1/listen/${props.ListID}/${props.Artikel.Bezeichnung}`,
+                    data,
+                    {
+                        headers: { "auth-token": localStorage.token },
+                    }
+                )
+                .then((res) => {
+                    console.log(res);
+                    props.updateState2(res.data);
+                })
+                .catch((err) => {
+                    console.error(err.response.data);
+                });
+        } else {
+            // Datenbankaufruf
+
+            axios
+                .delete(
+                    `http://${process.env.REACT_APP_IP}:3001/api/v1/artikel/${props.Artikel._id}`,
+                    {
+                        headers: { "auth-token": localStorage.token },
+                    }
+                )
+                .then((res) => {
+                    console.log(res);
+                    props.updateState(res.data);
+                })
+                .catch((err) => {
+                    console.error(err.response.data);
+                });
+        }
     }
     return (
         <div>
@@ -29,11 +51,11 @@ function Artikel(props) {
                 <div>
                     <Button
                         className={"m-1"}
-                        variant="danger"
+                        variant={props.ListID ? "primary" : "danger"}
                         type="submit"
                         onClick={(e) => deleteArtikel(e)}
                     >
-                        löschen
+                        {props.ListID ? "hinzufügen" : "löschen"}
                     </Button>
                 </div>
             </Container>

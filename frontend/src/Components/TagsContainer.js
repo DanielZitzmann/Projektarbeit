@@ -22,7 +22,6 @@ function TagsContainer() {
             })
             .then((res) => {
                 //console.log(res.data);
-                console.log(process.env.REACT_APP_IP);
                 setTags(res.data);
             })
             .catch((err) => {

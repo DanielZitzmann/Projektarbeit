@@ -120,10 +120,12 @@ router.patch("/:id/:artikel", async (req, res) => {
     //get article
     console.log(req.params.artikel);
     try {
-        const artikel = await Artikel.findOne({ _id: req.params.artikel });
+        const artikel = await Artikel.findOne({
+            Bezeichnung: req.params.artikel,
+        });
         if (artikel == null) {
             res.status(404).json(
-                `Artikel with id ${req.params.artikel} doesn´t exist`
+                `Artikel  ${req.params.artikel} doesn´t exist`
             );
             return;
         } else {
@@ -158,6 +160,7 @@ router.delete("/:id/artikel", async (req, res, next) => {
 
 router.delete("/:id/artikel", async (req, res) => {
     try {
+        console.log(req.body.artikelName);
         const updatedList = await Liste.updateOne(
             { _id: req.params.id },
             { $pull: { Artikel: req.body.artikelName } }
