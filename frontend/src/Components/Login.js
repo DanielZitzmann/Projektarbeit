@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import CookieConsent from "react-cookie-consent";
-
+import background from "./Images/BackgroundLogin.jpg";
 import axios from "axios";
 
 function LoginComp(props) {
@@ -10,7 +10,18 @@ function LoginComp(props) {
     //const [token, setToken] = useState("");
     //const [id, setID] = useState("");
     const [errorMsg, setErrorMsg] = useState("");
+    
+    //Variable für Hintergrundstyle
+    const loginStyle={       
+        backgroundImage: `url(${background})`,
+        height:'100vh',        
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',   
+        color:"#FFF",
+        FontFace:""
+                };
 
+    
     function login(event) {
         event.preventDefault();
         //api aufruf
@@ -45,7 +56,7 @@ function LoginComp(props) {
     }
 
     return (
-        <div className="border-primary d-flex justify-content-center align-items-center min-vh-100">
+        <div className="border-primary d-flex justify-content-center align-items-center min-vh-100" style={loginStyle}>
             <div className="border border-2 border-primary rounded-2 p-5">
                 <h1>Login</h1>
                 <Form>

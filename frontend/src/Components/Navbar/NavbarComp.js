@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import ArtikelContainer from "../ArtikelContainer";
 import ListenContainer from "../ListenContainer";
 import TagsContainer from "../TagsContainer";
-
 import "./NavbarComp.css";
 
 export default class NavbarComp extends Component {
@@ -58,7 +57,7 @@ export default class NavbarComp extends Component {
                                     <NavDropdown.Divider />
                                     <NavDropdown.Item
                                         href="#action/3.4"
-                                        onClick={this.deleteStorage}
+                                        onClick={this.deleteStorage}                                        
                                     >
                                         Abmelden
                                     </NavDropdown.Item>
