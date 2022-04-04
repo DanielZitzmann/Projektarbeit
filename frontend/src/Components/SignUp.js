@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import background from "./Images/BackgroundSignUp.jpg";
+import "./Login.css"
 
 function SignUpComp(props) {
     const [name, setName] = useState("");
@@ -78,7 +79,7 @@ function SignUpComp(props) {
     return (
         <div className="border-primary d-flex justify-content-center align-items-center min-vh-100" style={signUpStyle}>
             <div className="border border-2 border-primary rounded-2 p-5">
-                <h1>Registrieren</h1>
+                <h1 className="registrieren">Registrieren</h1>
                 <Form>
                     <Form.Group className="mb-3" controlId="formBasicUser">
                         <Form.Label>Benutzername</Form.Label>
@@ -115,6 +116,7 @@ function SignUpComp(props) {
                     </Form.Group>
 
                     <Button
+                        className="buttonstyle"
                         onClick={(e) => signUp(e)}
                         variant="primary"
                         type="submit"
@@ -123,6 +125,7 @@ function SignUpComp(props) {
                     </Button>
 
                     <Button
+                        className="buttonstyle"
                         onClick={() => props.toggleSignup(!props.SignUp)}
                         variant="secondary"
                         type="submit"

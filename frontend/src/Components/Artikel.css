@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'HappyTime';
+    src: url('./Fonts/HappyTime.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sassy';
+    src: url('./Fonts/Sassy\ Molassy.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+.artsty{    
+    font-size: 40px;
+    font-family:'Sassy';
+    font-style:normal;          
+}
+
+h1{
+
+    font-size: 50px;
+    font-family:'HappyTime';
+}

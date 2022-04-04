@@ -1,0 +1,19 @@
+
+@font-face {
+    font-family: 'HappyTime';
+    src: url('./Fonts/HappyTime.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.mb-3,.buttonstyle{
+    font-size: 25px;
+    font-family:'HappyTime';
+    font-style:normal;          
+}
+
+.login,.registrieren{
+    font-size: 50px;
+    font-family:'HappyTime';
+    font-style:inherit;
+}

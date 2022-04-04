@@ -3,6 +3,8 @@ import axios from "axios";
 import Artikel from "./Artikel";
 import { Form, ListGroup, Badge } from "react-bootstrap";
 import NewArtikel from "./NewArtikel";
+
+
 function ArtikelContainer(props) {
     //state Variablen
     const [artikel, setArtikel] = useState([]);
@@ -104,7 +106,7 @@ function ArtikelContainer(props) {
     }
 
     return (
-        <div style={{ border: "5px solid green" }}>
+        <div style={{ border: "5px solid green" }} >
             {!props.ListID && <h1>Meine Artikel</h1>}
             {errMsg && <h2 style={{ color: "red" }}>{errMsg}</h2>}
             {console.log(artikel)}
@@ -141,9 +143,10 @@ function ArtikelContainer(props) {
                 </Form.Group>
             </Form>
             {filteredByTags.map((artikel) => (
-                <ListGroup>
-                    <ListGroup.Item key={artikel._id}>
-                        <Artikel
+                <ListGroup >
+                    <ListGroup.Item key={artikel._id} >
+                        <Artikel 
+                            
                             Artikel={artikel}
                             updateState={setUpdateList}
                             updateState2={props.updateState}

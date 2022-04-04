@@ -3,6 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import CookieConsent from "react-cookie-consent";
 import background from "./Images/BackgroundLogin.jpg";
 import axios from "axios";
+import "./Login.css"
 
 function LoginComp(props) {
     const [name, setName] = useState("");
@@ -18,7 +19,7 @@ function LoginComp(props) {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',   
         color:"#FFF",
-        FontFace:""
+        
                 };
 
     
@@ -58,7 +59,7 @@ function LoginComp(props) {
     return (
         <div className="border-primary d-flex justify-content-center align-items-center min-vh-100" style={loginStyle}>
             <div className="border border-2 border-primary rounded-2 p-5">
-                <h1>Login</h1>
+                <h1 className="login">Login</h1>
                 <Form>
                     <Form.Group className="mb-3" controlId="formBasicUser">
                         <Form.Label>Benutzername</Form.Label>
@@ -86,6 +87,7 @@ function LoginComp(props) {
                     </Form.Group>
 
                     <Button
+                        className="buttonstyle"
                         onClick={(e) => login(e)}
                         variant="primary"
                         type="submit"
@@ -97,6 +99,7 @@ function LoginComp(props) {
                             noch kein Konto?
                         </Form.Label>
                         <Button
+                            className="buttonstyle"
                             onClick={() => props.toggleSignup(!props.SignUp)}
                             variant="secondary"
                             type="submit"
@@ -111,7 +114,7 @@ function LoginComp(props) {
                     location="top"
                     style={{ background: "#099DEC" }}
                     buttonStyle={{ color: "#000", background: "#fff" }}
-                    buttonText="Ich bin einverstanden mit der Verwendung von Cookies"
+                    buttonText="Mit benutzen dieser Seite bin ich mit der Verwendung von Cookies einsverstanden"
                     expires={7}
                 >
                     Diese Seite verwendet Cookies

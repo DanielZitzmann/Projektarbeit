@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Container, Badge } from "react-bootstrap";
 import axios from "axios";
+import "./Artikel.css"
 
 function Artikel(props) {
     function deleteArtikel(e) {
@@ -47,8 +48,8 @@ function Artikel(props) {
     return (
         <div>
             <Container className=" m-0 p-0 d-flex flex-row justify-content-between">
-                <h4 className="p-1 m-1">{props.Artikel.Bezeichnung}</h4>
-                <div>
+                <h4 className="p-1 m-1 artsty">{props.Artikel.Bezeichnung}</h4>
+                <div >
                     <Button
                         className={"m-1"}
                         variant={props.ListID ? "primary" : "danger"}
