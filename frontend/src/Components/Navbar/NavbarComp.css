@@ -19,6 +19,7 @@
 .nav-dropwdown {
     color: rgb(14, 143, 25);
     background-color: rgb(57, 147, 199);
+    border-radius: 4px;
 }
 
 .nav-links:hover {
