@@ -16,8 +16,12 @@
     border-radius: 4px;
     
 }
+.nav-dropwdown {
+    color: rgb(14, 143, 25);
+    background-color: rgb(57, 147, 199);
+}
 
-.nav-links:hover{
+.nav-links:hover {
     background-color: rgb(62, 41, 109);
     border-radius: 4px;
     transition: all 0.2s ease-out;

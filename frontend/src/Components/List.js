@@ -86,9 +86,11 @@ function List(props) {
     }
     return (
         <div>
-            <Container className=" m-0 p-0 d-flex flex-row justify-content-between">
-                <h4 className="p-1 m-1">{props.List.Name}</h4>
-                <div>
+            <Container className=" m-0 p-0 d-flex flex-wrap bd-highlight example-parent">
+                <div className="d-flex flex-row" style={{ minWidth: '40%' }}>
+                    <h4 className="p-1 m-1">{props.List.Name}</h4>
+                </div>
+                <div className="p-2 bd-highlight col-example ">
                     <Button
                         className={"m-1"}
                         variant={shareButtonColor}

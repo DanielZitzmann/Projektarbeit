@@ -15,7 +15,7 @@ export default class NavbarComp extends Component {
     render() {
         return (
             <Router>
-                <div>
+                <div style={{ position: "relative", zIndex: "2" }}>
                     <Navbar className="navbar" expand="sm">
                         <Navbar.Brand as={Link} to={"/home"} href="#home">
                             Cooles Banner
@@ -47,6 +47,7 @@ export default class NavbarComp extends Component {
                                 <NavDropdown
                                     title={localStorage.name}
                                     id="basic-nav-dropdown"
+                                    className="nav-dropwdown"
                                 >
                                     <NavDropdown.Item href="#action/3.1">
                                         Hallo
