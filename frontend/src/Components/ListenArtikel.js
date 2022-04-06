@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Container } from "react-bootstrap";
 import axios from "axios";
+import "./Artikel.css"
 
 function ListenArtikel(props) {
     function deleteArtikel(e) {
@@ -27,7 +28,7 @@ function ListenArtikel(props) {
 
     return (
         <Container className=" m-0 p-0 d-flex flex-row justify-content-between">
-            <h4 className="p-1 m-1">{props.Artikel}</h4>
+            <h4 className="p-1 m-1 artsty">{props.Artikel}</h4>
             <Button
                 className={"m-1"}
                 variant="danger"
