@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import background from "./Images/BackgroundSignUp.jpg";
-import "./Login.css"
+import "./Login.css";
 
 function SignUpComp(props) {
     const [name, setName] = useState("");
@@ -11,14 +11,12 @@ function SignUpComp(props) {
     //const [token, setToken] = useState("");
     //const [id, setID] = useState("");
     const [userErrorMsg, setUserErrorMsg] = useState("");
-    const signUpStyle={
-       
+    const signUpStyle = {
         backgroundImage: `url(${background})`,
-        height:'100vh',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',   
-        color:"#FFF"  
-    
+        height: "100vh",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        color: "#FFF",
     };
 
     function signUp(event) {
@@ -77,7 +75,10 @@ function SignUpComp(props) {
     }
 
     return (
-        <div className="border-primary d-flex justify-content-center align-items-center min-vh-100" style={signUpStyle}>
+        <div
+            className="border-primary d-flex justify-content-center align-items-center min-vh-100"
+            style={signUpStyle}
+        >
             <div className="border border-2 border-primary rounded-2 p-5">
                 <h1 className="registrieren">Registrieren</h1>
                 <Form>
@@ -109,7 +110,7 @@ function SignUpComp(props) {
                             onChange={(e) => setPW2(e.target.value)}
                         />
                         {userErrorMsg && (
-                            <Form.Text className="text-danger">
+                            <Form.Text className="text-danger bg-white">
                                 {userErrorMsg}
                             </Form.Text>
                         )}

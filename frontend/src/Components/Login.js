@@ -3,7 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import CookieConsent from "react-cookie-consent";
 import background from "./Images/BackgroundLogin.jpg";
 import axios from "axios";
-import "./Login.css"
+import "./Login.css";
 
 function LoginComp(props) {
     const [name, setName] = useState("");
@@ -11,18 +11,16 @@ function LoginComp(props) {
     //const [token, setToken] = useState("");
     //const [id, setID] = useState("");
     const [errorMsg, setErrorMsg] = useState("");
-    
-    //Variable für Hintergrundstyle
-    const loginStyle={       
-        backgroundImage: `url(${background})`,
-        height:'100vh',        
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',   
-        color:"#FFF",
-        
-                };
 
-    
+    //Variable für Hintergrundstyle
+    const loginStyle = {
+        backgroundImage: `url(${background})`,
+        height: "100vh",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        color: "#FFF",
+    };
+
     function login(event) {
         event.preventDefault();
         //api aufruf
@@ -57,7 +55,10 @@ function LoginComp(props) {
     }
 
     return (
-        <div className="border-primary d-flex justify-content-center align-items-center min-vh-100" style={loginStyle}>
+        <div
+            className="border-primary d-flex justify-content-center align-items-center min-vh-100"
+            style={loginStyle}
+        >
             <div className="border border-2 border-primary rounded-2 p-5">
                 <h1 className="login">Login</h1>
                 <Form>
@@ -80,7 +81,7 @@ function LoginComp(props) {
                             onChange={(e) => setPW(e.target.value)}
                         />
                         {errorMsg && (
-                            <Form.Text className="text-danger">
+                            <Form.Text className="text-danger bg-white">
                                 {errorMsg}
                             </Form.Text>
                         )}
@@ -114,7 +115,7 @@ function LoginComp(props) {
                     location="top"
                     style={{ background: "#099DEC" }}
                     buttonStyle={{ color: "#000", background: "#fff" }}
-                    buttonText="Mit benutzen dieser Seite bin ich mit der Verwendung von Cookies einsverstanden"
+                    buttonText="Ich bin ich mit der Verwendung von Cookies einverstanden"
                     expires={7}
                 >
                     Diese Seite verwendet Cookies
